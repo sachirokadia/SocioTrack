@@ -231,7 +231,7 @@ npm test
 
 ## 📝 Known Issues
 
-1. **Alert Popup Persistence:** Dismissed alerts (via "Close All") reappear on page refresh. Workaround: Click individual "Dismiss" buttons to mark as read.
+1. **Fixed:** "Close All" on the alert popup now marks every shown alert as read on the server, so dismissed alerts no longer reappear on refresh (previously only individual "Dismiss" did this).
 
 2. **Fixed:** `/api/admin/users` is now mounted (the controller already existed) — the Admin Users page works.
 

@@ -85,7 +85,7 @@ const AdminNotices: React.FC = () => {
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+            className="bg-[#2fb3a6] text-white px-4 py-2 rounded-md hover:bg-[#259a8e]"
           >
             {showForm ? 'Cancel' : '+ Create Notice'}
           </button>
@@ -110,7 +110,7 @@ const AdminNotices: React.FC = () => {
                 required
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
             </div>
 
@@ -121,7 +121,7 @@ const AdminNotices: React.FC = () => {
                 rows={5}
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               />
             </div>
 
@@ -131,7 +131,7 @@ const AdminNotices: React.FC = () => {
                 <select
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value as NoticeType })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value="notice">Notice</option>
                   <option value="alert">Alert</option>
@@ -143,7 +143,7 @@ const AdminNotices: React.FC = () => {
                 <select
                   value={formData.priority}
                   onChange={(e) => setFormData({ ...formData, priority: e.target.value as Priority })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                 >
                   <option value={Priority.LOW}>Low</option>
                   <option value={Priority.MEDIUM}>Medium</option>
@@ -156,7 +156,7 @@ const AdminNotices: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="w-full bg-[#2fb3a6] text-white py-2 px-4 rounded-md hover:bg-[#259a8e] disabled:opacity-50"
             >
               {submitting ? 'Creating...' : 'Create'}
             </button>

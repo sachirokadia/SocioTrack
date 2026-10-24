@@ -93,7 +93,7 @@ const TechnicianComplaintDetails: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <button
         onClick={() => navigate('/technician/complaints')}
-        className="mb-4 text-blue-600 hover:text-blue-800 flex items-center"
+        className="mb-4 text-teal-700 hover:text-teal-800 flex items-center"
       >
         <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -163,7 +163,7 @@ const TechnicianComplaintDetails: React.FC = () => {
               {!showStatusUpdate ? (
                 <button
                   onClick={() => setShowStatusUpdate(true)}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                  className="bg-[#2fb3a6] text-white px-4 py-2 rounded-md hover:bg-[#259a8e]"
                 >
                   Progress to {nextStatus === ComplaintStatus.IN_PROGRESS ? 'In Progress' : 'Resolved'}
                 </button>
@@ -186,7 +186,7 @@ const TechnicianComplaintDetails: React.FC = () => {
                           setError('');
                         }}
                         rows={4}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                         placeholder="Describe how the issue was resolved..."
                       />
                     </div>
@@ -219,7 +219,7 @@ const TechnicianComplaintDetails: React.FC = () => {
           {complaint.feedback && (
             <div className="border-t pt-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Resident Feedback</h3>
-              <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+              <div className="bg-teal-50 border border-teal-200 rounded-md p-4">
                 <div className="flex items-center mb-2">
                   <span className="text-sm font-medium text-gray-700 mr-2">Rating:</span>
                   <div className="flex">

@@ -76,8 +76,8 @@ const TechnicianDashboard: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-lg shadow p-6">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-blue-100 rounded-md p-3">
-              <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex-shrink-0 bg-teal-100 rounded-md p-3">
+              <svg className="h-6 w-6 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
@@ -130,7 +130,7 @@ const TechnicianDashboard: React.FC = () => {
                 <Link
                   key={complaint._id ?? complaint.id}
                   to={`/technician/complaints/${complaint._id ?? complaint.id}`}
-                  className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all"
+                  className="block p-4 border border-gray-200 rounded-lg hover:border-teal-300 hover:shadow-sm transition-all"
                 >
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-medium text-gray-900">{complaint.title}</h3>
@@ -157,7 +157,7 @@ const TechnicianDashboard: React.FC = () => {
                 <Link
                   key={complaint._id ?? complaint.id}
                   to={`/technician/complaints/${complaint._id ?? complaint.id}`}
-                  className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all"
+                  className="block p-4 border border-gray-200 rounded-lg hover:border-teal-300 hover:shadow-sm transition-all"
                 >
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-medium text-gray-900">{complaint.title}</h3>
@@ -184,7 +184,7 @@ const TechnicianDashboard: React.FC = () => {
                 <Link
                   key={complaint._id ?? complaint.id}
                   to={`/technician/complaints/${complaint._id ?? complaint.id}`}
-                  className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all"
+                  className="block p-4 border border-gray-200 rounded-lg hover:border-teal-300 hover:shadow-sm transition-all"
                 >
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-medium text-gray-900">{complaint.title}</h3>

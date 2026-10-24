@@ -45,7 +45,7 @@ const AdminComplaintDetails: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <button onClick={() => navigate('/admin/complaints')} className="mb-4 text-blue-600 hover:text-blue-800 flex items-center">
+      <button onClick={() => navigate('/admin/complaints')} className="mb-4 text-teal-700 hover:text-teal-800 flex items-center">
         <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
@@ -110,7 +110,7 @@ const AdminComplaintDetails: React.FC = () => {
           {complaint.feedback && (
             <div className="border-t pt-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Resident Feedback</h3>
-              <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+              <div className="bg-teal-50 border border-teal-200 rounded-md p-4">
                 <div className="flex items-center mb-2">
                   <span className="text-sm font-medium text-gray-700 mr-2">Rating:</span>
                   <div className="flex">

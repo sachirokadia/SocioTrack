@@ -51,7 +51,7 @@ const MyComplaints: React.FC = () => {
           </div>
           <Link
             to="/resident/complaints/new"
-            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+            className="bg-[#2fb3a6] text-white px-4 py-2 rounded-md hover:bg-[#259a8e] transition-colors"
           >
             + New Complaint
           </Link>
@@ -69,7 +69,7 @@ const MyComplaints: React.FC = () => {
               name="status"
               value={filters.status}
               onChange={handleFilterChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <option value="">All Statuses</option>
               <option value={ComplaintStatus.PENDING}>Pending</option>
@@ -88,7 +88,7 @@ const MyComplaints: React.FC = () => {
               name="category"
               value={filters.category}
               onChange={handleFilterChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <option value="">All Categories</option>
               {COMPLAINT_CATEGORIES.map((cat) => (
@@ -129,7 +129,7 @@ const MyComplaints: React.FC = () => {
           {!filters.status && !filters.category && (
             <Link
               to="/resident/complaints/new"
-              className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+              className="mt-4 inline-block bg-[#2fb3a6] text-white px-4 py-2 rounded-md hover:bg-[#259a8e]"
             >
               Create Complaint
             </Link>
@@ -186,7 +186,7 @@ const MyComplaints: React.FC = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm">
                     <Link
                       to={`/resident/complaints/${complaint._id}`}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="text-teal-700 hover:text-teal-900"
                     >
                       View Details
                     </Link>

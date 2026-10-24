@@ -88,6 +88,25 @@ const ResidentDashboard: React.FC = () => {
     }
   };
 
+  // Close All used to only hide the popup, so dismissed alerts came
+  // back on refresh (README known issue #1). It now marks every shown
+  // alert as read on the server, like the individual Dismiss buttons.
+  const dismissAllAlerts = async () => {
+    try {
+      await Promise.all(
+        alerts.map((a) => {
+          const id = getAlertId(a);
+          return id ? notificationService.markAsRead(id) : Promise.resolve();
+        })
+      );
+    } catch (error) {
+      console.error('Failed to mark alerts as read:', error);
+    } finally {
+      setAlerts([]);
+      setShowAlertPopup(false);
+    }
+  };
+
   const dismissAlert = async (alertId: string | undefined) => {
     if (!alertId) {
       console.error('dismissAlert called with a missing alert id — check the toJSON/_id vs id issue');
@@ -133,7 +152,7 @@ const ResidentDashboard: React.FC = () => {
                       <p className="text-sm text-gray-600 mt-1">{alert.message}</p>
                       <button
                         onClick={() => dismissAlert(getAlertId(alert))}
-                        className="text-sm text-blue-600 hover:text-blue-800 mt-1"
+                        className="text-sm text-teal-700 hover:text-teal-800 mt-1"
                       >
                         Dismiss
                       </button>
@@ -143,7 +162,7 @@ const ResidentDashboard: React.FC = () => {
               </div>
             </div>
             <button
-              onClick={() => setShowAlertPopup(false)}
+              onClick={dismissAllAlerts}
               className="mt-4 w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 transition-colors"
             >
               Close All Alerts
@@ -243,8 +262,8 @@ const ResidentDashboard: React.FC = () => {
 
         <div className="bg-white rounded-lg shadow p-6">
           <div className="flex items-center">
-            <div className="flex-shrink-0 bg-blue-100 rounded-md p-3">
-              <svg className="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="flex-shrink-0 bg-teal-100 rounded-md p-3">
+              <svg className="h-6 w-6 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
@@ -290,7 +309,7 @@ const ResidentDashboard: React.FC = () => {
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
             <h2 className="text-lg font-semibold text-gray-900">Recent Complaints</h2>
-            <Link to="/resident/complaints/new" className="text-sm text-blue-600 hover:text-blue-800">
+            <Link to="/resident/complaints/new" className="text-sm text-teal-700 hover:text-teal-800">
               + New Complaint
             </Link>
           </div>
@@ -300,7 +319,7 @@ const ResidentDashboard: React.FC = () => {
                 <p className="text-gray-500">No complaints yet</p>
                 <Link
                   to="/resident/complaints/new"
-                  className="inline-block mt-4 text-blue-600 hover:text-blue-800"
+                  className="inline-block mt-4 text-teal-700 hover:text-teal-800"
                 >
                   Create your first complaint
                 </Link>
@@ -311,7 +330,7 @@ const ResidentDashboard: React.FC = () => {
                   <Link
                     key={complaint._id}
                     to={`/resident/complaints/${complaint._id}`}
-                    className="block p-4 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-sm transition-all"
+                    className="block p-4 border border-gray-200 rounded-lg hover:border-teal-300 hover:shadow-sm transition-all"
                   >
                     <div className="flex justify-between items-start mb-2">
                       <h3 className="font-medium text-gray-900">{complaint.title}</h3>
@@ -335,7 +354,7 @@ const ResidentDashboard: React.FC = () => {
         <div className="bg-white rounded-lg shadow">
           <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
             <h2 className="text-lg font-semibold text-gray-900">Latest Notices</h2>
-            <Link to="/resident/notices" className="text-sm text-blue-600 hover:text-blue-800">
+            <Link to="/resident/notices" className="text-sm text-teal-700 hover:text-teal-800">
               View All
             </Link>
           </div>

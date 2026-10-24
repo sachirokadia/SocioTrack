@@ -68,7 +68,7 @@ const Notifications: React.FC = () => {
           {unreadCount > 0 && (
             <button
               onClick={handleMarkAllAsRead}
-              className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+              className="text-teal-700 hover:text-teal-800 text-sm font-medium"
             >
               Mark all as read
             </button>
@@ -90,7 +90,7 @@ const Notifications: React.FC = () => {
             <div
               key={notification._id}
               className={`bg-white rounded-lg shadow p-4 transition-all ${
-                !notification.isRead ? 'border-l-4 border-blue-500' : ''
+                !notification.isRead ? 'border-l-4 border-teal-500' : ''
               }`}
             >
               <div className="flex justify-between items-start">
@@ -105,7 +105,7 @@ const Notifications: React.FC = () => {
                       </span>
                     )}
                     {!notification.isRead && (
-                      <span className="inline-block w-2 h-2 bg-blue-600 rounded-full"></span>
+                      <span className="inline-block w-2 h-2 bg-[#2fb3a6] rounded-full"></span>
                     )}
                   </div>
                   <p className={`text-sm ${!notification.isRead ? 'text-gray-700' : 'text-gray-500'}`}>
@@ -118,7 +118,7 @@ const Notifications: React.FC = () => {
                 {!notification.isRead && (
                   <button
                     onClick={() => handleMarkAsRead(notification._id)}
-                    className="ml-4 text-sm text-blue-600 hover:text-blue-800"
+                    className="ml-4 text-sm text-teal-700 hover:text-teal-800"
                   >
                     Mark as read
                   </button>

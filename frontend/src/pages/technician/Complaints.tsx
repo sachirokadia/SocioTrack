@@ -84,7 +84,7 @@ const TechnicianComplaints: React.FC = () => {
                   <td className="px-6 py-4 text-sm">
                     <Link
                       to={`/technician/complaints/${complaint._id}`}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="text-teal-700 hover:text-teal-900"
                     >
                       View Details
                     </Link>

@@ -4,7 +4,10 @@ import User from './models/User';
 import Bill from './models/Bill';
 import Payment from './models/Payment';
 import Meeting from './models/Meeting';
-import { UserRole } from './types';
+import Complaint from './models/Complaint';
+import Notice from './models/Notice';
+import Notification from './models/Notification';
+import { UserRole, ComplaintStatus, NoticePriority } from './types';
 
 // Load environment variables
 dotenv.config();
@@ -71,6 +74,9 @@ async function seedDatabase() {
     await Bill.deleteMany({});
     await Payment.deleteMany({});
     await Meeting.deleteMany({});
+    await Complaint.deleteMany({});
+    await Notice.deleteMany({});
+    await Notification.deleteMany({});
 
     // Create demo users
     console.log('\n👥 Creating demo users...');
@@ -128,6 +134,78 @@ async function seedDatabase() {
         createdBy: admin._id,
       });
       console.log('   ✓ Demo bills, payments and AGM created');
+    }
+
+    // Demo complaints, notices and an alert (with notifications), so
+    // every dashboard shows realistic activity on first login instead
+    // of empty lists
+    console.log('\n📋 Creating demo complaints and notices...');
+    const mike = createdUsers.find((u) => u.email === 'mike@sociotrack.com');
+    const sarah = createdUsers.find((u) => u.email === 'sarah@sociotrack.com');
+    const adminUser = createdUsers.find((u) => u.email === 'admin@sociotrack.com');
+    const johnUser = createdUsers.find((u) => u.email === 'john@sociotrack.com');
+    const janeUser = createdUsers.find((u) => u.email === 'jane@sociotrack.com');
+    if (adminUser && johnUser && janeUser) {
+      await Complaint.create({
+        title: 'Leaking tap in bathroom',
+        description: 'The bathroom tap in flat A-101 has been dripping continuously for two days and the wall below it is damp.',
+        category: 'plumbing',
+        status: ComplaintStatus.PENDING,
+        priority: NoticePriority.HIGH,
+        createdBy: johnUser._id,
+        location: 'A-101, Bathroom',
+      });
+      if (mike) {
+        await Complaint.create({
+          title: 'Street light not working near B block',
+          description: 'The street light at the B block entrance has not worked for a week, making the parking area dark at night.',
+          category: 'electrical',
+          status: ComplaintStatus.IN_PROGRESS,
+          priority: NoticePriority.MEDIUM,
+          createdBy: janeUser._id,
+          technician: mike._id,
+          assignedAt: new Date('2026-10-20'),
+        });
+      }
+      if (sarah) {
+        await Complaint.create({
+          title: 'Garbage not collected on 3rd floor',
+          description: 'Garbage from the 3rd floor lobby was not collected yesterday morning.',
+          category: 'cleaning',
+          status: ComplaintStatus.RESOLVED,
+          priority: NoticePriority.LOW,
+          createdBy: johnUser._id,
+          technician: sarah._id,
+          assignedAt: new Date('2026-10-18'),
+          resolvedAt: new Date('2026-10-19'),
+          resolutionNote: 'Garbage cleared and the lobby area disinfected.',
+          feedback: { rating: 5, comment: 'Quick resolution, thank you!', submittedAt: new Date('2026-10-19') },
+        });
+      }
+      await Notice.create({
+        title: 'Water supply maintenance on Sunday',
+        description: 'Water supply will be shut from 10 AM to 2 PM on Sunday for pipeline maintenance. Please store water in advance.',
+        type: 'notice',
+        priority: NoticePriority.MEDIUM,
+        createdBy: adminUser._id,
+      });
+      const alert = await Notice.create({
+        title: 'Security alert: verify visitors at main gate',
+        description: 'All residents are requested to verify visitors at the main gate and report unknown persons to security immediately.',
+        type: 'alert',
+        priority: NoticePriority.URGENT,
+        createdBy: adminUser._id,
+      });
+      await Notification.createBulk(
+        [johnUser, janeUser].map((resident) => ({
+          user: resident._id,
+          title: `New Alert: ${alert.title}`,
+          message: alert.description,
+          type: 'alert' as const,
+          relatedNotice: alert._id,
+        }))
+      );
+      console.log('   ✓ Demo complaints, notices and alert created');
     }
 
     // Summary

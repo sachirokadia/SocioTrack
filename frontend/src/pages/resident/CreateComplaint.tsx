@@ -81,7 +81,7 @@ const CreateComplaint: React.FC = () => {
               required
               value={formData.title}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               placeholder="Brief description of the issue"
             />
           </div>
@@ -97,7 +97,7 @@ const CreateComplaint: React.FC = () => {
               rows={5}
               value={formData.description}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               placeholder="Provide detailed information about the issue"
             />
           </div>
@@ -113,7 +113,7 @@ const CreateComplaint: React.FC = () => {
                 required
                 value={formData.category}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
                 {COMPLAINT_CATEGORIES.map((cat) => (
                   <option key={cat} value={cat}>
@@ -133,7 +133,7 @@ const CreateComplaint: React.FC = () => {
                 required
                 value={formData.priority}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               >
                 <option value={Priority.LOW}>Low</option>
                 <option value={Priority.MEDIUM}>Medium</option>
@@ -153,7 +153,7 @@ const CreateComplaint: React.FC = () => {
               type="text"
               value={formData.location}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
               placeholder="e.g., Building A, Floor 2, Near Elevator"
             />
           </div>
@@ -169,7 +169,7 @@ const CreateComplaint: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 bg-[#2fb3a6] text-white rounded-md hover:bg-[#259a8e] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {loading ? 'Submitting...' : 'Submit Complaint'}
             </button>

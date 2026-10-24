@@ -96,7 +96,7 @@ const ComplaintDetails: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <button
         onClick={() => navigate('/resident/complaints')}
-        className="mb-4 text-blue-600 hover:text-blue-800 flex items-center"
+        className="mb-4 text-teal-700 hover:text-teal-800 flex items-center"
       >
         <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -181,7 +181,7 @@ const ComplaintDetails: React.FC = () => {
           {complaint.feedback ? (
             <div className="border-t pt-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Your Feedback</h3>
-              <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+              <div className="bg-teal-50 border border-teal-200 rounded-md p-4">
                 <div className="flex items-center mb-2">
                   <span className="text-sm font-medium text-gray-700 mr-2">Rating:</span>
                   <div className="flex">
@@ -260,7 +260,7 @@ const ComplaintDetails: React.FC = () => {
                     onChange={(e) => setFeedbackForm({ ...feedbackForm, comment: e.target.value })}
                     rows={4}
                     maxLength={500}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
                     placeholder="Share your experience with the resolution..."
                   />
                   <p className="text-xs text-gray-500 mt-1">
@@ -271,7 +271,7 @@ const ComplaintDetails: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submittingFeedback}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="w-full bg-[#2fb3a6] text-white py-2 px-4 rounded-md hover:bg-[#259a8e] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {submittingFeedback ? 'Submitting...' : 'Submit Feedback'}
                 </button>

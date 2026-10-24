@@ -71,7 +71,7 @@ const AdminComplaints: React.FC = () => {
             <select
               value={filters.status}
               onChange={(e) => setFilters({ ...filters, status: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <option value="">All Statuses</option>
               <option value={ComplaintStatus.PENDING}>Pending</option>
@@ -87,7 +87,7 @@ const AdminComplaints: React.FC = () => {
             <select
               value={filters.category}
               onChange={(e) => setFilters({ ...filters, category: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
             >
               <option value="">All Categories</option>
               {COMPLAINT_CATEGORIES.map((cat) => (
@@ -172,7 +172,7 @@ const AdminComplaints: React.FC = () => {
                           </select>
                           <button
                             onClick={() => handleAssign(complaint._id!)}
-                            className="text-blue-600 hover:text-blue-800"
+                            className="text-teal-700 hover:text-teal-800"
                           >
                             ✓
                           </button>
@@ -189,7 +189,7 @@ const AdminComplaints: React.FC = () => {
                       ) : (
                         <button
                           onClick={() => setAssigningTo(complaint._id!)}
-                          className="text-blue-600 hover:text-blue-800"
+                          className="text-teal-700 hover:text-teal-800"
                           disabled={complaint.status !== ComplaintStatus.PENDING}
                         >
                           {complaint.status === ComplaintStatus.PENDING ? 'Assign' : '-'}
@@ -199,7 +199,7 @@ const AdminComplaints: React.FC = () => {
                     <td className="px-6 py-4 text-sm">
                       <Link
                         to={`/admin/complaints/${complaint._id}`}
-                        className="text-blue-600 hover:text-blue-900"
+                        className="text-teal-700 hover:text-teal-900"
                       >
                         View
                       </Link>

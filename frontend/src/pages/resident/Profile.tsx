@@ -16,7 +16,7 @@ const Profile: React.FC = () => {
       <div className="bg-white rounded-lg shadow">
         <div className="px-6 py-4 border-b border-gray-200">
           <div className="flex items-center">
-            <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+            <div className="w-16 h-16 rounded-full bg-[#2fb3a6] text-white flex items-center justify-center text-2xl font-bold">
               {user.name.charAt(0).toUpperCase()}
             </div>
             <div className="ml-4">

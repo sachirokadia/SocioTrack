@@ -112,8 +112,13 @@ export const getBillById = asyncHandler(
     const bill = await Bill.findById(req.params.id)
       .populate('resident', 'name email flatNumber');
     if (!bill || !bill.isActive) return next(createAppError('Bill not found', 404));
-    if (req.user?.role === UserRole.RESIDENT && String(bill.resident) !== req.user.userId
-      && (bill.resident as any)._id && String((bill.resident as any)._id) !== req.user.userId) {
+    // After populate, resident is a User doc; without populate it would
+    // be an ObjectId — handle both instead of the old double condition,
+    // which could let a resident read another resident's bill.
+    const billResidentId = (bill.resident as any)._id
+      ? String((bill.resident as any)._id)
+      : String(bill.resident);
+    if (req.user?.role === UserRole.RESIDENT && billResidentId !== req.user.userId) {
       return next(createAppError('Access denied', 403));
     }
     const payments = await Payment.find({ bill: bill._id }).sort({ createdAt: -1 });
