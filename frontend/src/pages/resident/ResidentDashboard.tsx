@@ -158,56 +158,67 @@ const ResidentDashboard: React.FC = () => {
         <p className="text-gray-600 mt-1">Here's an overview of your complaints and society updates</p>
       </div>
 
-      {/* Member Dashboard — SocietyNow-style billing strip */}
+      {/* Member Dashboard — left phone of the promo: teal header,
+          summary rows, then the icon tile grid */}
       {summary && (
-        <div className="mb-8">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Member Dashboard</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-            <div className="bg-white rounded-lg shadow p-6">
-              <p className="text-sm font-medium text-gray-500">Last Bill Amount</p>
-              <p className="text-2xl font-semibold text-gray-900 mt-1">
+        <div className="mb-8 bg-white rounded-2xl shadow overflow-hidden">
+          <div className="society-teal px-6 py-3 flex items-center">
+            <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <h2 className="ml-3 text-lg font-semibold text-white">Member Dashboard</h2>
+          </div>
+
+          <div className="divide-y divide-gray-100 px-6">
+            <div className="py-3 flex justify-between items-center">
+              <span className="text-sm text-gray-600">Last Bill Amount</span>
+              <span className="font-semibold text-gray-900">
                 {summary.lastBill ? formatINR(summary.lastBill.amount) : '—'}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">{summary.lastBill ? summary.lastBill.period : 'No bills yet'}</p>
+                <span className="ml-2 text-xs font-normal text-gray-500">{summary.lastBill?.period}</span>
+              </span>
             </div>
-            <div className="bg-white rounded-lg shadow p-6">
-              <p className="text-sm font-medium text-gray-500">Last Payment</p>
-              <p className="text-2xl font-semibold text-gray-900 mt-1">
+            <div className="py-3 flex justify-between items-center">
+              <span className="text-sm text-gray-600">Last Payment</span>
+              <span className="font-semibold text-gray-900">
                 {summary.lastPayment ? formatINR(summary.lastPayment.amount) : '—'}
-              </p>
-              <p className="text-xs text-gray-500 mt-1">
-                {summary.lastPayment ? `${summary.lastPayment.mode} · ${summary.lastPayment.status}` : 'No payments yet'}
-              </p>
+                <span className="ml-2 text-xs font-normal text-gray-500">
+                  {summary.lastPayment ? `${summary.lastPayment.mode} · ${summary.lastPayment.status}` : ''}
+                </span>
+              </span>
             </div>
-            <div className="bg-white rounded-lg shadow p-6">
-              <p className="text-sm font-medium text-gray-500">Advance</p>
-              <p className="text-2xl font-semibold text-gray-900 mt-1">{formatINR(summary.advance)}</p>
-              <p className="text-xs text-gray-500 mt-1">Paid over and above billed amount</p>
+            <div className="py-3 flex justify-between items-center">
+              <span className="text-sm text-gray-600">Advance</span>
+              <span className="font-semibold text-gray-900">{formatINR(summary.advance)}</span>
             </div>
-            <div className="bg-white rounded-lg shadow p-6">
-              <p className="text-sm font-medium text-gray-500">Outstanding</p>
-              <p className="text-2xl font-semibold text-gray-900 mt-1">{formatINR(summary.outstanding)}</p>
-              <p className="text-xs text-gray-500 mt-1">
-                {summary.unpaidBills} unpaid bill{summary.unpaidBills === 1 ? '' : 's'}
-              </p>
+            <div className="py-3 flex justify-between items-center">
+              <span className="text-sm text-gray-600">Outstanding</span>
+              <span className="font-semibold text-gray-900">
+                {formatINR(summary.outstanding)}
+                <span className="ml-2 text-xs font-normal text-gray-500">
+                  {summary.unpaidBills} unpaid bill{summary.unpaidBills === 1 ? '' : 's'}
+                </span>
+              </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 border-t border-gray-100">
             {[
-              { label: 'My Profile', path: '/resident/profile' },
-              { label: 'Maintenance Bills', path: '/resident/bills' },
-              { label: 'Pay Online', path: '/resident/pay' },
-              { label: 'Payment History', path: '/resident/payments' },
-              { label: 'AGM / EAGM', path: '/resident/meetings' },
-              { label: 'View Ledger', path: '/resident/ledger' },
+              { label: 'My Profile', path: '/resident/profile', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+              { label: 'Maintenance Bills', path: '/resident/bills', icon: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
+              { label: 'Pay Online', path: '/resident/pay', icon: 'M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z' },
+              { label: 'Payment History', path: '/resident/payments', icon: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' },
+              { label: 'AGM / EAGM', path: '/resident/meetings', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z' },
+              { label: 'View Ledger', path: '/resident/ledger', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
             ].map((tile) => (
               <Link
                 key={tile.path}
                 to={tile.path}
-                className="bg-white rounded-lg shadow p-4 text-center text-sm font-medium text-gray-900 hover:border-blue-300 hover:shadow-md border border-transparent transition-all"
+                className="flex flex-col items-center gap-2 border-gray-100 border-b sm:border-r px-4 py-5 hover:bg-teal-50 transition-colors"
               >
-                {tile.label}
+                <svg className="h-7 w-7 text-[#2fb3a6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d={tile.icon} />
+                </svg>
+                <span className="text-sm font-medium text-gray-900 text-center">{tile.label}</span>
               </Link>
             ))}
           </div>

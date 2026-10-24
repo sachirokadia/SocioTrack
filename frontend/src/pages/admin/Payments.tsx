@@ -60,7 +60,7 @@ const AdminPayments: React.FC = () => {
           <p className="text-gray-600 mt-1">Verify payment intimations so they count against bills</p>
         </div>
         <select value={filter} onChange={(e) => setFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
           <option value="">All statuses</option>
           <option value="pending">Pending verification</option>
           <option value="verified">Verified</option>

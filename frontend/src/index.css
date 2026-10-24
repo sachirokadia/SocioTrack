@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind v4 entry: the old v3 @tailwind directives only emitted a
+   fraction of the utilities with tailwindcss 4 installed (no spacing,
+   sizing, text-size or colour utilities at all), which left every page
+   unstyled. @import "tailwindcss" is the v4 entry point. */
+@import "tailwindcss";
 
 body {
   margin: 0;
@@ -14,4 +16,23 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* SocietyNow-style theme: the promo screenshot's cyan-to-magenta
+   gradient, teal phone headers and serif display titles. SocioTrack
+   keeps its own name — only the visual language is borrowed. */
+.society-gradient {
+  background: linear-gradient(180deg, #7ed3e2 0%, #8fb8dd 32%, #a87fd4 62%, #d94fb8 100%);
+}
+
+.society-teal {
+  background-color: #2fb3a6;
+}
+
+.society-teal-dark {
+  background-color: #259a8e;
+}
+
+.font-display {
+  font-family: Georgia, 'Times New Roman', serif;
 }

@@ -33,8 +33,10 @@ A full-stack MERN application for managing residential society complaints, notic
 - React 18 with TypeScript
 - React Router v6
 - Axios for API calls
-- Tailwind CSS v4
+- Tailwind CSS v4 (entry is `@import "tailwindcss"` in `src/index.css` — the old v3 `@tailwind` directives only emitted a fraction of the utilities under v4 and left every page unstyled; fixed 2026-10-24)
 - Vite
+
+**UI theme:** SocietyNow-style visual language — cyan-to-magenta gradient login with serif "Smart Society App" title and city skyline, teal member-dashboard header with summary rows and icon tiles, and a teal Society Payments intimation screen. SocioTrack keeps its own name and demo accounts; only the look is borrowed.
 
 **Backend:**
 - Node.js + Express

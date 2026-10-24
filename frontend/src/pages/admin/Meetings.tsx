@@ -72,7 +72,7 @@ const AdminMeetings: React.FC = () => {
     );
   }
 
-  const inputCls = 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500';
+  const inputCls = 'w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500';
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -81,7 +81,7 @@ const AdminMeetings: React.FC = () => {
           <h1 className="text-3xl font-bold text-gray-900">AGM / EAGM</h1>
           <p className="text-gray-600 mt-1">Schedule society meetings for residents</p>
         </div>
-        <button onClick={() => setShowForm(!showForm)} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+        <button onClick={() => setShowForm(!showForm)} className="bg-[#2fb3a6] text-white px-4 py-2 rounded-md hover:bg-[#259a8e]">
           {showForm ? 'Cancel' : '+ New Meeting'}
         </button>
       </div>
@@ -115,7 +115,7 @@ const AdminMeetings: React.FC = () => {
             <label className="block text-sm font-medium text-gray-700 mb-1">Agenda</label>
             <textarea rows={4} value={formData.agenda} onChange={(e) => setFormData({ ...formData, agenda: e.target.value })} className={inputCls} />
           </div>
-          <button type="submit" disabled={submitting} className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50">
+          <button type="submit" disabled={submitting} className="bg-[#2fb3a6] text-white py-2 px-4 rounded-md hover:bg-[#259a8e] disabled:opacity-50">
             {submitting ? 'Creating...' : 'Create Meeting'}
           </button>
         </form>

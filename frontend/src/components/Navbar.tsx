@@ -72,19 +72,19 @@ const Navbar: React.FC = () => {
   if (!user) return null;
 
   return (
-    <nav className="bg-white shadow-sm border-b border-gray-200">
+    <nav className="society-teal shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link to={getDashboardLink()} className="flex items-center">
-              <span className="text-xl font-bold text-blue-600">SocioTrack</span>
+              <span className="text-xl font-bold text-white">SocioTrack</span>
             </Link>
             <div className="hidden sm:ml-8 sm:flex sm:space-x-4">
               {getNavLinks().map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md transition-colors"
+                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 rounded-md transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -96,7 +96,7 @@ const Navbar: React.FC = () => {
             {/* Notification Bell */}
             <Link
               to={`/${user.role}/notifications`}
-              className="relative p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-100 rounded-full transition-colors"
+              className="relative p-2 text-white/90 hover:text-white hover:bg-white/10 rounded-full transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -117,9 +117,9 @@ const Navbar: React.FC = () => {
             <div className="relative">
               <button
                 onClick={() => setShowDropdown(!showDropdown)}
-                className="flex items-center space-x-2 text-sm text-gray-700 hover:text-blue-600 focus:outline-none"
+                className="flex items-center space-x-2 text-sm text-white hover:text-white focus:outline-none"
               >
-                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-medium">
+                <div className="w-8 h-8 rounded-full bg-white text-teal-700 flex items-center justify-center font-medium">
                   {user.name.charAt(0).toUpperCase()}
                 </div>
                 <span className="hidden md:block">{user.name}</span>

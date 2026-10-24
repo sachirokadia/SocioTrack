@@ -40,7 +40,7 @@ const ResidentPaymentHistory: React.FC = () => {
           <p className="text-gray-600 mt-1">Every payment and intimation, with its verification status</p>
         </div>
         <select value={filter} onChange={(e) => setFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
           <option value="">All statuses</option>
           <option value="pending">Pending verification</option>
           <option value="verified">Verified</option>
@@ -51,7 +51,7 @@ const ResidentPaymentHistory: React.FC = () => {
       {payments.length === 0 ? (
         <div className="bg-white rounded-lg shadow p-12 text-center">
           <p className="text-gray-500">No payments yet</p>
-          <Link to="/resident/pay" className="inline-block mt-4 text-blue-600 hover:text-blue-800">Make a payment</Link>
+          <Link to="/resident/pay" className="inline-block mt-4 text-teal-700 hover:text-teal-900">Make a payment</Link>
         </div>
       ) : (
         <div className="bg-white rounded-lg shadow overflow-hidden">

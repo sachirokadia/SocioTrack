@@ -38,7 +38,7 @@ const ResidentBills: React.FC = () => {
           <h1 className="text-3xl font-bold text-gray-900">Maintenance Bills</h1>
           <p className="text-gray-600 mt-1">Your society bills and what is still due on each</p>
         </div>
-        <Link to="/resident/pay" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+        <Link to="/resident/pay" className="bg-[#2fb3a6] text-white px-4 py-2 rounded-md hover:bg-[#259a8e]">
           Pay Online
         </Link>
       </div>
@@ -76,7 +76,7 @@ const ResidentBills: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-right">
                     {bill.status !== 'paid' && (
-                      <Link to={`/resident/pay?billId=${bill._id}`} className="text-blue-600 hover:text-blue-800 text-sm">
+                      <Link to={`/resident/pay?billId=${bill._id}`} className="text-teal-700 hover:text-teal-900 text-sm">
                         Pay
                       </Link>
                     )}
