@@ -22,6 +22,11 @@ import ResidentComplaintDetails from './pages/resident/ComplaintDetails';
 import ResidentNotices from './pages/resident/Notices';
 import ResidentNotifications from './pages/resident/Notifications';
 import ResidentProfile from './pages/resident/Profile';
+import ResidentBills from './pages/resident/Bills';
+import ResidentPayOnline from './pages/resident/PayOnline';
+import ResidentPaymentHistory from './pages/resident/PaymentHistory';
+import ResidentLedger from './pages/resident/Ledger';
+import ResidentMeetings from './pages/resident/Meetings';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -31,6 +36,9 @@ import AdminNotices from './pages/admin/Notices';
 import AdminUsers from './pages/admin/Users';
 import AdminNotifications from './pages/admin/Notifications';
 import AdminProfile from './pages/admin/Profile';
+import AdminBills from './pages/admin/Bills';
+import AdminPayments from './pages/admin/Payments';
+import AdminMeetings from './pages/admin/Meetings';
 
 // Technician Pages
 import TechnicianDashboard from './pages/technician/TechnicianDashboard';
@@ -98,6 +106,11 @@ function App() {
             <Route path="notices" element={<ResidentNotices />} />
             <Route path="notifications" element={<ResidentNotifications />} />
             <Route path="profile" element={<ResidentProfile />} />
+            <Route path="bills" element={<ResidentBills />} />
+            <Route path="pay" element={<ResidentPayOnline />} />
+            <Route path="payments" element={<ResidentPaymentHistory />} />
+            <Route path="ledger" element={<ResidentLedger />} />
+            <Route path="meetings" element={<ResidentMeetings />} />
           </Route>
           
           {/* Admin Routes */}
@@ -116,6 +129,9 @@ function App() {
             <Route path="users" element={<AdminUsers />} />
             <Route path="notifications" element={<AdminNotifications />} />
             <Route path="profile" element={<AdminProfile />} />
+            <Route path="bills" element={<AdminBills />} />
+            <Route path="payments" element={<AdminPayments />} />
+            <Route path="meetings" element={<AdminMeetings />} />
           </Route>
           
           {/* Technician Routes */}

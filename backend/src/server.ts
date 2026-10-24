@@ -12,6 +12,8 @@ import complaintRoutes from './routes/complaintRoutes';
 import noticeRoutes from './routes/noticeRoutes';
 import notificationRoutes from './routes/notificationRoutes';
 import adminRoutes from './routes/adminRoutes';
+import billingRoutes from './routes/billingRoutes';
+import meetingRoutes from './routes/meetingRoutes';
 
 // Load environment variables
 dotenv.config();
@@ -102,6 +104,8 @@ app.use('/api/complaints', complaintRoutes);
 app.use('/api/notices', noticeRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/billing', billingRoutes);
+app.use('/api/meetings', meetingRoutes);
 
 // 404 handler
 app.use(notFoundHandler);

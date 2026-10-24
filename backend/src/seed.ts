@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import User from './models/User';
+import Bill from './models/Bill';
+import Payment from './models/Payment';
+import Meeting from './models/Meeting';
 import { UserRole } from './types';
 
 // Load environment variables
@@ -61,10 +64,13 @@ async function seedDatabase() {
     await mongoose.connect(MONGO_URI);
     console.log('✅ Connected to MongoDB');
 
-    // Clear existing users
+    // Clear existing users and billing data
     console.log('\n🗑️  Clearing existing users...');
     const deleteResult = await User.deleteMany({});
     console.log(`   Deleted ${deleteResult.deletedCount} existing users`);
+    await Bill.deleteMany({});
+    await Payment.deleteMany({});
+    await Meeting.deleteMany({});
 
     // Create demo users
     console.log('\n👥 Creating demo users...');
@@ -78,6 +84,50 @@ async function seedDatabase() {
       } catch (error: any) {
         console.error(`   ✗ Failed to create user ${userData.email}:`, error.message);
       }
+    }
+
+    // Demo billing data (bills, one verified payment, one pending
+    // cheque intimation, and an AGM) so the member dashboard has
+    // something to show on first login
+    console.log('\n🧾 Creating demo bills, payments and meetings...');
+    const admin = createdUsers.find((u) => u.email === 'admin@sociotrack.com');
+    const john = createdUsers.find((u) => u.email === 'john@sociotrack.com');
+    const jane = createdUsers.find((u) => u.email === 'jane@sociotrack.com');
+    if (admin && john) {
+      const sepBill = await Bill.create({
+        resident: john._id, title: 'Monthly Maintenance', category: 'maintenance',
+        period: 'Sep 2026', amount: 1800, paidAmount: 1800, status: 'paid',
+        dueDate: new Date('2026-09-30'), createdBy: admin._id,
+      });
+      await Payment.create({
+        resident: john._id, bill: sepBill._id, amount: 1800, mode: 'online',
+        status: 'verified', paymentDate: new Date('2026-09-28'),
+      });
+      await Bill.create({
+        resident: john._id, title: 'Monthly Maintenance', category: 'maintenance',
+        period: 'Oct 2026', amount: 2042.7,
+        dueDate: new Date('2026-10-31'), createdBy: admin._id,
+      });
+      await Payment.create({
+        resident: john._id, amount: 1000, mode: 'cheque', status: 'pending',
+        bankName: 'ICICI Bank', chequeNumber: '123456',
+        chequeDate: new Date('2026-10-07'), paymentDate: new Date('2026-10-07'),
+        remarks: 'Payment intimation — awaiting verification',
+      });
+      if (jane) {
+        await Bill.create({
+          resident: jane._id, title: 'Monthly Maintenance', category: 'maintenance',
+          period: 'Oct 2026', amount: 1500,
+          dueDate: new Date('2026-10-31'), createdBy: admin._id,
+        });
+      }
+      await Meeting.create({
+        title: 'Annual General Meeting 2026', type: 'agm',
+        date: new Date('2026-11-15T11:00:00'), venue: 'Community Hall',
+        agenda: 'Annual budget approval, maintenance review, election of committee members.',
+        createdBy: admin._id,
+      });
+      console.log('   ✓ Demo bills, payments and AGM created');
     }
 
     // Summary

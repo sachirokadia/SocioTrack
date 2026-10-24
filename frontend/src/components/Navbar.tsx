@@ -46,12 +46,16 @@ const Navbar: React.FC = () => {
         return [
           { label: 'Dashboard', path: '/resident/dashboard' },
           { label: 'My Complaints', path: '/resident/complaints' },
+          { label: 'Bills', path: '/resident/bills' },
+          { label: 'Ledger', path: '/resident/ledger' },
           { label: 'Notices', path: '/resident/notices' },
         ];
       case UserRole.ADMIN:
         return [
           { label: 'Dashboard', path: '/admin/dashboard' },
           { label: 'Complaints', path: '/admin/complaints' },
+          { label: 'Bills', path: '/admin/bills' },
+          { label: 'Payments', path: '/admin/payments' },
           { label: 'Notices', path: '/admin/notices' },
           { label: 'Users', path: '/admin/users' },
         ];

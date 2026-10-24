@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as complaintService from '../../services/complaintService';
 import { Complaint } from '../../types';
-import StatusBadge from '../../components/StatusBadge';
 import PriorityBadge from '../../components/PriorityBadge';
 import LoadingSpinner from '../../components/LoadingSpinner';
 

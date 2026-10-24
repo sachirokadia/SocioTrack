@@ -178,6 +178,120 @@ export interface CreateNoticeRequest {
   priority: Priority;
 }
 
+// Billing Types (SocietyNow-style member dashboard / payments)
+export type BillStatus = 'pending' | 'partial' | 'paid' | 'overdue';
+export type PaymentMode = 'online' | 'cheque' | 'rtgs' | 'neft' | 'cash';
+export type PaymentStatus = 'pending' | 'verified' | 'rejected';
+export type MeetingType = 'agm' | 'eagm' | 'general';
+
+export interface Bill {
+  _id: string;
+  resident: User | string;
+  title: string;
+  category: string;
+  period: string;
+  amount: number;
+  paidAmount: number;
+  remainingAmount?: number;
+  dueDate: string;
+  status: BillStatus;
+  notes?: string;
+  createdAt: string;
+  updatedAt: string;
+  payments?: Payment[];
+}
+
+export interface Payment {
+  _id: string;
+  resident: User | string;
+  bill?: Bill | string;
+  amount: number;
+  mode: PaymentMode;
+  status: PaymentStatus;
+  bankName?: string;
+  branch?: string;
+  chequeNumber?: string;
+  chequeDate?: string;
+  transactionNumber?: string;
+  paymentDate: string;
+  remarks?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Meeting {
+  _id: string;
+  title: string;
+  type: MeetingType;
+  date: string;
+  venue?: string;
+  agenda: string;
+  minutes?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface LedgerEntry {
+  date: string;
+  description: string;
+  debit: number;
+  credit: number;
+  balance: number;
+  ref: string;
+  kind: 'bill' | 'payment';
+}
+
+export interface Ledger {
+  entries: LedgerEntry[];
+  totalBilled: number;
+  totalPaid: number;
+  outstanding: number;
+  advance: number;
+}
+
+export interface MemberSummary {
+  lastBill: Bill | null;
+  lastPayment: Payment | null;
+  totalBilled: number;
+  totalPaid: number;
+  outstanding: number;
+  advance: number;
+  unpaidBills: number;
+}
+
+export interface CreateBillRequest {
+  residentId: string;
+  title: string;
+  category?: string;
+  period: string;
+  amount: number;
+  dueDate: string;
+  notes?: string;
+}
+
+export interface CreatePaymentRequest {
+  billId?: string;
+  residentId?: string;
+  amount: number;
+  mode: PaymentMode;
+  bankName?: string;
+  branch?: string;
+  chequeNumber?: string;
+  chequeDate?: string;
+  transactionNumber?: string;
+  paymentDate?: string;
+  remarks?: string;
+}
+
+export interface CreateMeetingRequest {
+  title: string;
+  type: MeetingType;
+  date: string;
+  venue?: string;
+  agenda: string;
+  minutes?: string;
+}
+
 // Analytics Types
 export interface Analytics {
   complaints: {

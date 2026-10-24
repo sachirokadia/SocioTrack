@@ -10,6 +10,8 @@ A full-stack MERN application for managing residential society complaints, notic
 - Submit feedback on resolved complaints
 - View society notices and alerts
 - Receive real-time notifications
+- Member dashboard: last bill amount, last payment, advance and outstanding
+- Maintenance bills, Pay Online, payment history, ledger and AGM/EAGM — modelled on the SocietyNow Smart Society App screens
 
 ### For Admins
 - Dashboard with analytics (complaint stats, user counts, category breakdown)
@@ -17,6 +19,7 @@ A full-stack MERN application for managing residential society complaints, notic
 - Create and manage notices/alerts
 - View all users (residents & technicians)
 - Monitor complaint resolution rates
+- Raise maintenance bills, verify cheque/RTGS/NEFT payment intimations, schedule AGM/EAGM meetings
 
 ### For Technicians
 - Dashboard with assigned complaints grouped by status
@@ -195,6 +198,22 @@ SocioTrack/
 
 ### Admin
 - GET `/api/admin/analytics` - Dashboard analytics
+- GET `/api/admin/users` - List users, optionally filtered by `?role=` (admin only)
+
+### Billing (maintenance bills, payments, ledger)
+- GET `/api/billing/summary` - Member dashboard summary (last bill, last payment, advance, outstanding)
+- GET `/api/billing/ledger` - Ledger: bills as debits, verified payments as credits, running balance
+- POST `/api/billing/bills` - Raise a bill (admin)
+- GET `/api/billing/bills` - List bills (residents see only their own)
+- GET `/api/billing/bills/:id` - Bill details with its payments
+- POST `/api/billing/payments` - Pay online (verified immediately) or submit a cheque/RTGS/NEFT intimation (pending until verified)
+- GET `/api/billing/payments` - Payment history
+- PUT `/api/billing/payments/:id/verify` - Verify or reject an intimation (admin; verifying applies it to the bill)
+
+### Meetings (AGM / EAGM)
+- GET `/api/meetings` - List meetings, optionally filtered by `?type=agm|eagm|general`
+- POST `/api/meetings` - Schedule a meeting (admin)
+- DELETE `/api/meetings/:id` - Delete a meeting (admin)
 
 ## 🧪 Testing
 
@@ -212,7 +231,7 @@ npm test
 
 1. **Alert Popup Persistence:** Dismissed alerts (via "Close All") reappear on page refresh. Workaround: Click individual "Dismiss" buttons to mark as read.
 
-2. **Missing Endpoint:** `/api/admin/users` endpoint needs to be implemented for the Admin Users page.
+2. **Fixed:** `/api/admin/users` is now mounted (the controller already existed) — the Admin Users page works.
 
 ## 🚀 Deployment
 

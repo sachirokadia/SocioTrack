@@ -32,6 +32,39 @@ export enum AlertType {
   GENERAL = 'general'
 }
 
+// Maintenance bill status. 'overdue' is computed on read (past due date
+// and not fully paid) rather than stored, so it can never go stale.
+export enum BillStatus {
+  PENDING = 'pending',
+  PARTIAL = 'partial',
+  PAID = 'paid',
+  OVERDUE = 'overdue'
+}
+
+// How a payment was made. Offline modes (cheque / RTGS / NEFT) are
+// recorded as a payment intimation and stay 'pending' until an admin
+// verifies them; 'online' payments are verified immediately.
+export enum PaymentMode {
+  ONLINE = 'online',
+  CHEQUE = 'cheque',
+  RTGS = 'rtgs',
+  NEFT = 'neft',
+  CASH = 'cash'
+}
+
+export enum PaymentStatus {
+  PENDING = 'pending',
+  VERIFIED = 'verified',
+  REJECTED = 'rejected'
+}
+
+// Society meeting type (AGM / EAGM / general body meeting)
+export enum MeetingType {
+  AGM = 'agm',
+  EAGM = 'eagm',
+  GENERAL = 'general'
+}
+
 // Base Interface
 export interface BaseDocument extends Document {
   _id: Types.ObjectId;
